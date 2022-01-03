@@ -15,6 +15,10 @@ builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 // builder.Services.AddAutoMapper(typeof(StartupBase));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+// Error in 73. some kind of Error regarding ILogger
+builder.Services.AddLogging();
+builder.Services.AddSingleton(typeof(ILogger), typeof(Logger<StartupBase>));
+
 var app = builder.Build();
 
 //Seed PostgreSQL Database
